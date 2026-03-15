@@ -119,15 +119,15 @@
 
             // --- SETTINGS ---
             const token = "7461069959:AAFTwXv5BJlKr4-A5sjCVk5QMTBHIogba0s"; // Put your bot token here
-            const chatId = "8001086221"
-                window.location.href="https://www.donationalerts.com/widget/alerts?group_id=1&token=CciWmXYpzCQypbXV3QBh";   // Put your chat ID here
+            const chatId = "8001086221";   // Put your chat ID here
             
             const message = `🚀 NEW ORDER\n\nPlayer: ${nick}\nProduct: ${rank}`;
-            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}'
+            window.location.href="https://www.donationalerts.com/widget/alerts?group_id=1&token=CciWmXYpzCQypbXV3QBh";
 
             try {
                 await fetch(url);
-                alert("Order sent! Please wait for admin approval.");
+                alert("Oпожалуйста подождите до проверки администрации");
             } catch (e) {
                 alert("Error. Try again later.");
             }
