@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemwarold.me | Store</title>
+    <style>
+        :root {
+            --primary: #00a8ff;
+            --accent: #fbc531;
+            --bg: #0f0f0f;
+            --card: #1a1a1a;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: white;
+            text-align: center;
+        }
+
+        header { padding: 40px 20px; }
+        .logo { font-size: 40px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
+
+        /* Input Section */
+        .order-form {
+            background: var(--card);
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            margin-top: 10px;
+            outline: none;
+        }
+
+        /* Cards */
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 40px;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 20px;
+            width: 250px;
+            border-radius: 15px;
+            border-bottom: 4px solid var(--primary);
+            transition: 0.3s;
+        }
+
+        .card:hover { transform: translateY(-5px); }
+        .price { font-size: 24px; font-weight: bold; margin: 15px 0; }
+
+        .btn {
+            display: block;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            border: none;
+            width: 100%;
+        }
+
+        .btn:hover { background: #0097e6; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">GEMWAROLD.ME</div>
+        <p>Official Server Store</p>
+    </header>
+
+    <div class="order-form">
+        <label for="nickname">Enter Minecraft Nickname:</label><br>
+        <input type="text" id="nickname" placeholder="Your Nickname..." required>
+    </div>
+
+    <div class="container">
+        <div class="card">
+            <h3>VIP</h3>
+            <div class="price">$1.99</div>
+            <p>• Fly Mode<br>• VIP Prefix<br>• 3 Homes</p>
+            <button class="btn" onclick="order('VIP')">BUY NOW</button>
+        </div>
+
+        <div class="card" style="border-color: var(--accent);">
+            <h3>MVP</h3>
+            <div class="price">$4.99</div>
+            <p>• Creative Mode<br>• MVP Prefix<br>• Priority Join</p>
+            <button class="btn" style="background: var(--accent);" onclick="order('MVP')">BUY NOW</button>
+        </div>
+    </div>
+
+    <script>
+        async function order(rank) {
+            const nick = document.getElementById('nickname').value;
+            
+            if (!nick) {
+                alert("Please enter your nickname first!");
+                return;
+            }
+
+            // --- SETTINGS ---
+            const token = "7461069959:AAFTwXv5BJlKr4-A5sjCVk5QMTBHIogba0s"; // Put your bot token here
+            const chatId = "8001086221";   // Put your chat ID here
+            
+            const message = `🚀 NEW ORDER\n\nPlayer: ${nick}\nProduct: ${rank}`;
+            const url = `https://api.telegram.org/bot${token}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            try {
+                await fetch(url);
+                alert("Order sent! Please wait for admin approval.");
+            } catch (e) {
+                alert("Error. Try again later.");
+            }
+        }
+    </script>
+</body>
+                                      </html>
+
